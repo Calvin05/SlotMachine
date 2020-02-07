@@ -224,6 +224,9 @@ $("#spinButton").click(function () {
         spinResult = Reels();
         fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
         $("div#result>p").text(fruits);
+        $("#slot1").attr('src',getImage(spinResult[0]));
+        $("#slot2").attr('src',getImage(spinResult[1]));
+        $("#slot3").attr('src',getImage(spinResult[2]));
         determineWinnings();
         turn++;
         showPlayerStats();
@@ -233,3 +236,34 @@ $("#spinButton").click(function () {
     }
     
 });
+
+function getImage(name) {
+    slotName:String;
+    switch(String(name)) {
+        case "Banana":
+            slotName =  '../img/banana.png';
+        break;
+        case "Bar":
+            slotName = '../img/bar.png';
+        break;
+        case "Cherry":
+            slotName = '../img/cherry.png';
+        break;
+        case "Orange":
+            slotName = '../img/orange.png';
+        break;
+        case "Bell":
+            slotName = '../img/bell.png';
+        break;
+        case "Grapes":
+            slotName = '../img/grape.png';
+        break;
+        case "Seven":
+            slotName = '../img/seven.png';
+        break;
+        default:
+            slotName = '../img/placeholder.png';
+    }
+    return slotName;
+    
+}
