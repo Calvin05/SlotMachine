@@ -15,6 +15,7 @@ let sevens = 0;
 let cherries = 0;
 let bars = 0;
 let bells = 0;
+let oranges = 0;
 // let sevens = 0;
 let blanks = 0;
 
@@ -22,7 +23,7 @@ let blanks = 0;
 function showPlayerStats()
 {
     winRatio = winNumber / turn;
-    $("#jackpot").text("Jackpot: " + jackpot);
+    $("#jackpot").text("Jackpot: $" + jackpot);
     $("#playerMoney").text("Player Money: " + playerMoney);
     $("#playerTurn").text("Turn: " + turn);
     $("#playerWins").text("Wins: " + winNumber);
@@ -53,7 +54,6 @@ function resetAll() {
     lossNumber = 0;
     winRatio = 0;
 }
-
 
 /* Check to see if the player won the jackpot */
 function checkJackPot() {
@@ -205,7 +205,7 @@ function determineWinnings()
 
 /* When the player clicks the spin button the game kicks off */
 $("#spinButton").click(function () {
-    playerBet = $("div#betEntry>input").val();
+    playerBet = $("div#entry>input").val();
 
     if (playerMoney == 0)
     {
@@ -237,6 +237,26 @@ $("#spinButton").click(function () {
     
 });
 
+/* When the player clicks the reset button to reset the game */
+$("#reset").click(function () {
+    console.log("reset button lcick");
+    resetAll();
+    showPlayerStats();
+    $("div#winOrLose>p").text("");
+});
+
+$("#jackpotBtn").click(function () {
+    $("#slot1").attr('src','../img/coin.png');
+    $("#slot2").attr('src', '../img/coin.png');
+    $("#slot3").attr('src', '../img/coin.png');
+    $("div#winOrLose>p").text("You Won the $" + jackpot + " Jackpot!!");
+    // alert("You Won the $" + jackpot + " Jackpot!!");
+    playerMoney += jackpot;
+    jackpot = 1000;
+    showPlayerStats();
+});
+
+/* Get the images based on the name of the value*/
 function getImage(name) {
     slotName:String;
     switch(String(name)) {
@@ -262,7 +282,7 @@ function getImage(name) {
             slotName = '../img/seven.png';
         break;
         default:
-            slotName = '../img/placeholder.png';
+            slotName = '../img/blank.png';
     }
     return slotName;
     

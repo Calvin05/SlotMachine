@@ -5,38 +5,50 @@
     <title>Slot Machine</title>
     <!-- CSS Section -->
     <link href="css/main.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
 </head>
 <body>
-    <div>
-        <h1>Slot Machine</h1>
+    <div id=allpage>
+        <h1 id='title'>Slot Machine</h1>
         <div id='main'>
-        <img src="./img/placeholder.png" alt="" srcset="" class='slot' id='slot1'>
-        <img src="./img/placeholder.png" alt="" srcset="" class='slot' id='slot2'>
-        <img src="./img/placeholder.png" alt="" srcset="" class='slot' id='slot3'>
+        <img src="" alt="" srcset="" class='slot' id='slot1'>
+        <img src="" alt="" srcset="" class='slot' id='slot2'>
+        <img src="" alt="" srcset="" class='slot' id='slot3'>
         </div>
-        <div>
-            <h2>Player Statistics</h2>
-            <hr />
-            <ul id="playerStats">
-                <li id="jackpot">Jackpot: 500</li>
-                <li id="playerMoney">Player Money: 1000</li>
-                <li id="playerTurn">Turn: 0</li>
-                <li id="playerWins">Wins: 0</li>
-                <li id="playerLosses">Losses: 0</li>
-                <li id="playerWinRatio">Win Ratio: 0%</li>
-            </ul>
-            <hr />
-        </div>
-
+        
         <div id="betEntry">
-
-            <p>Place Your Bet Here</p>
-            <input id="playerBet" name="points" value="10">
-            <hr />
+            <div id="entry">
+                <p>Place Your Bet Here:</p>
+                <input id="playerBet" name="points" value="10">
+            </div>
+            <button id="spinButton">Spin!</button>
         </div>
-
-
-        <button id="spinButton">Spin!</button>
+        <div id="winOrLose" >
+            <p data-aos="fade-down"></p>
+        </div>
+        <ul id="playerStats">
+            <li id="playerMoney">Player Money: 1000</li>
+            <li id="jackpot">Jackpot: $5000</li>
+            <!-- <li id="playerTurn">Turn: 0</li>
+            <li id="playerWins">Wins: 0</li>
+            <li id="playerLosses">Losses: 0</li>
+            <li id="playerWinRatio">Win Ratio: 0%</li> -->
+        </ul>
+        <button id="reset" class="keyButton">Reset</button>
+        <button id="jackpotBtn" class="keyButton">Don't click</button>
+    </div>
+    <div>
+        <h2>Player Statistics</h2>
+        <hr />
+        <ul id="playerStats">
+            <li id="jackpot">Jackpot: 500</li>
+            <li id="playerMoney">Player Money: 1000</li>
+            <li id="playerTurn">Turn: 0</li>
+            <li id="playerWins">Wins: 0</li>
+            <li id="playerLosses">Losses: 0</li>
+            <li id="playerWinRatio">Win Ratio: 0%</li>
+        </ul>
+        <hr />
     </div>
 
     <div id="result">
@@ -45,13 +57,15 @@
         <p></p>
     </div>
     <hr />
-    <div id="winOrLose">
-        <p></p>
-    </div>
+    
 
 
     <!-- JavaScript Section -->
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script> -->
 </body>
 </html>
