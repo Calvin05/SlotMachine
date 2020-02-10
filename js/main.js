@@ -19,6 +19,8 @@ let oranges = 0;
 // let sevens = 0;
 let blanks = 0;
 
+let counter = 1;
+
 /* Utility function to show Player Stats */
 function showPlayerStats()
 {
@@ -61,9 +63,15 @@ function checkJackPot() {
     let jackPotTry = Math.floor(Math.random() * 51 + 1);
     let jackPotWin = Math.floor(Math.random() * 51 + 1);
     if (jackPotTry == jackPotWin) {
-        alert("You Won the $" + jackpot + " Jackpot!!");
+        $("#slot1").attr('src','../img/coin.png');
+        $("#slot2").attr('src', '../img/coin.png');
+        $("#slot3").attr('src', '../img/coin.png');
+        $("div#winOrLose>p").text("You Won the $" + jackpot + " Jackpot!!");
+    // alert("You Won the $" + jackpot + " Jackpot!!");
         playerMoney += jackpot;
         jackpot = 1000;
+        showPlayerStats();
+        
     }
 }
 
@@ -204,7 +212,7 @@ function determineWinnings()
 }
 
 /* When the player clicks the spin button the game kicks off */
-$("#spinButton").click(function () {
+$("#spinButton").click( function () {
     playerBet = $("div#entry>input").val();
 
     if (playerMoney == 0)
@@ -221,15 +229,26 @@ $("#spinButton").click(function () {
         alert("All bets must be a positive $ amount.");
     }
     else if (playerBet <= playerMoney) {
-        spinResult = Reels();
-        fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-        $("div#result>p").text(fruits);
-        $("#slot1").attr('src',getImage(spinResult[0]));
-        $("#slot2").attr('src',getImage(spinResult[1]));
-        $("#slot3").attr('src',getImage(spinResult[2]));
-        determineWinnings();
-        turn++;
-        showPlayerStats();
+        counter = 1;
+        $("#spinButton").attr("disabled", true);
+        playSound();
+        setTimeout(() => {
+            displayResult();
+        }, 1300);
+        repeat();
+        // spinResult = Reels();
+        // fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
+        // $("div#result>p").text(fruits);
+        // $("#slot1").attr('src',getImage(spinResult[0]));
+        // $("#slot2").attr('src',getImage(spinResult[1]));
+        // $("#slot3").attr('src',getImage(spinResult[2]));
+        // determineWinnings();
+        // turn++;
+        // showPlayerStats();
+        setTimeout(() => {
+            $("#spinButton").attr("disabled", false);
+        }, 1800);
+        
     }
     else {
         alert("Please enter a valid bet amount");
@@ -287,3 +306,56 @@ function getImage(name) {
     return slotName;
     
 }
+
+// repeat random images for 2 sections
+function repeat()
+{
+    randomImage();
+    if (counter < 22){
+        counter++
+        window.setTimeout(repeat, 50);
+    }
+    
+}
+
+// display result after generate random spin Result
+function displayResult() {
+    spinResult = Reels();
+    fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
+    $("div#result>p").text(fruits);
+    $("#slot1").attr('src',getImage(spinResult[0]));
+    $("#slot2").attr('src',getImage(spinResult[1]));
+    $("#slot3").attr('src',getImage(spinResult[2]));
+    determineWinnings();
+    turn++;
+    showPlayerStats();
+}
+
+// generate random images for each slot.
+function randomImage()
+{
+    let pics = Array('../img/banana.png', '../img/bar.png','../img/cherry.png',
+                    '../img/orange.png', '../img/bell.png', '../img/grape.png',
+                    '../img/seven.png', '../img/blank.png', '../img/blank.png',
+                    '../img/coin.png');
+    let randomNum1 = Math.floor(Math.random() * pics.length);
+    let randomNum2 = Math.floor(Math.random() * pics.length);
+    let randomNum3 = Math.floor(Math.random() * pics.length);
+    $("#slot1").attr('src', pics[randomNum1]);
+    $("#slot2").attr('src', pics[randomNum2]);
+    $("#slot3").attr('src', pics[randomNum3]);
+    // callback();
+}
+
+var sound1 = "Sound1";
+
+function loadSound() {
+    createjs.Sound.registerSound("../sounds/sound1.mp3", sound1);
+  }
+
+  function playSound() {
+    createjs.Sound.play(sound1);
+  }
+
+
+
