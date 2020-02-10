@@ -63,6 +63,9 @@ function checkJackPot() {
     let jackPotTry = Math.floor(Math.random() * 51 + 1);
     let jackPotWin = Math.floor(Math.random() * 51 + 1);
     if (jackPotTry == jackPotWin) {
+        let obj2 = document.createElement("audio");
+        obj2.src = "../sounds/jackpot.wav"; 
+        obj2.play(); 
         $("#slot1").attr('src','../img/coin.png');
         $("#slot2").attr('src', '../img/coin.png');
         $("#slot3").attr('src', '../img/coin.png');
@@ -200,11 +203,17 @@ function determineWinnings()
         else {
             winnings = playerBet * 1;
         }
+        let obj = document.createElement("audio");
+        obj.src = "../sounds/ding.mp3"; 
+        obj.play(); 
         winNumber++;
         showWinMessage();
     }
     else
     {
+        let obj1 = document.createElement("audio");
+        obj1.src = "../sounds/error.wav"; 
+        obj1.play(); 
         lossNumber++;
         showLossMessage();
     }
@@ -231,10 +240,14 @@ $("#spinButton").click( function () {
     else if (playerBet <= playerMoney) {
         counter = 1;
         $("#spinButton").attr("disabled", true);
-        playSound();
+        var obj = document.createElement("audio");
+        obj.src = "../sounds/sound1.mp3"; 
+        obj.play(); 
         setTimeout(() => {
+            obj.pause();
+            obj.currentTime = 0;
             displayResult();
-        }, 1300);
+        }, 1200);
         repeat();
         // spinResult = Reels();
         // fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
@@ -265,6 +278,10 @@ $("#reset").click(function () {
 });
 
 $("#jackpotBtn").click(function () {
+    let obj2 = document.createElement("audio");
+        obj2.src = "../sounds/jackpot.wav"; 
+        obj2.play(); 
+        lossNumber++;
     $("#slot1").attr('src','../img/coin.png');
     $("#slot2").attr('src', '../img/coin.png');
     $("#slot3").attr('src', '../img/coin.png');
