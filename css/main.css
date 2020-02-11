@@ -1,22 +1,35 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+body {
+    background-image: url(../img/coin.jpg);
+    background-size: cover;
+}
 ul#playerStats {
     list-style-type: none;
     padding: 0;
     margin: 5px;
     width: 40%;
     float: left;
-    margin-left: 30px;
+    margin-left: 50px;
 }
-ul#playerStats li {
+ul#playerStats li{
     font-size: 25px;
     font-family: 'Luckiest Guy', cursive;
 }
+ul#playerStats li:first-child {
+    margin-bottom: 20px;
+}
+ul#playerStats li:nth-child(2) {
+    color:  #f64b3c;
+    text-decoration: underline;
+    font-style: oblique;
+}
 #allpage {
     width: 800px;
-    height: 800px;
-    background-color: yellowgreen;
+    height: 750px;
+    background-image: linear-gradient(to bottom right, #ffd98e, #f4efd3);
     margin: auto;
     border-radius: 30px;
+    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.5);
 }
 #main {
     /* position: fixed; */
@@ -36,6 +49,7 @@ ul#playerStats li {
     font-size: 85px;
     margin-top: 15px;
     padding-top: 20px;
+    text-shadow: 4px 2px 18px white;
 }
 .slot {
     margin-top: 33px;
@@ -128,12 +142,24 @@ ul#playerStats li {
 }
 
 #reset {
+    margin-left: 55px;
     background-color: #21bf73;
+    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.5);
+}
+
+#reset:hover {
+    background-color: #7fcd91;
 }
 
 #jackpotBtn {
     background-color: #f0134d;
+    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.5);
 }
+
+#jackpotBtn:hover {
+    background-color: #ff6464;
+}
+
 
   
   
