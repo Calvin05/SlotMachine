@@ -1,4 +1,10 @@
-﻿/// <reference path="jquery.js" />
+﻿/* Name: Viet Cuong Nguyen
+** Student ID: 300973502
+** Createion Date: 2020/02/03
+** Game description: Slot Machine Game
+*/
+
+/// <reference path="jquery.js" />
 let playerMoney = 1000;
 let winnings = 0;
 let jackpot = 5000;
@@ -16,7 +22,6 @@ let cherries = 0;
 let bars = 0;
 let bells = 0;
 let oranges = 0;
-// let sevens = 0;
 let blanks = 0;
 
 let counter = 1;
@@ -63,12 +68,8 @@ function checkJackPot() {
     let jackPotTry = Math.floor(Math.random() * 51 + 1);
     let jackPotWin = Math.floor(Math.random() * 51 + 1);
     if (jackPotTry == jackPotWin) {
-        let obj2 = document.createElement("audio");
-        obj2.src = "../sounds/jackpot.wav"; 
-        obj2.play(); 
-        $("#slot1").attr('src','../img/coin.png');
-        $("#slot2").attr('src', '../img/coin.png');
-        $("#slot3").attr('src', '../img/coin.png');
+        playSound("../sounds/jackpot.wav");
+        displayImages('../img/coin.png','../img/coin.png','../img/coin.png');
         $("div#winOrLose>p").text("You Won the $" + jackpot + " Jackpot!!");
     // alert("You Won the $" + jackpot + " Jackpot!!");
         playerMoney += jackpot;
@@ -203,9 +204,7 @@ function determineWinnings()
         else {
             winnings = playerBet * 1;
         }
-        let obj = document.createElement("audio");
-        obj.src = "../sounds/ding.mp3"; 
-        obj.play(); 
+        playSound("../sounds/ding.mp3");
         winNumber++;
         showWinMessage();
     }
@@ -249,15 +248,6 @@ $("#spinButton").click( function () {
             displayResult();
         }, 1200);
         repeat();
-        // spinResult = Reels();
-        // fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-        // $("div#result>p").text(fruits);
-        // $("#slot1").attr('src',getImage(spinResult[0]));
-        // $("#slot2").attr('src',getImage(spinResult[1]));
-        // $("#slot3").attr('src',getImage(spinResult[2]));
-        // determineWinnings();
-        // turn++;
-        // showPlayerStats();
         setTimeout(() => {
             $("#spinButton").attr("disabled", false);
         }, 1800);
@@ -266,7 +256,6 @@ $("#spinButton").click( function () {
     else {
         alert("Please enter a valid bet amount");
     }
-    
 });
 
 /* When the player clicks the reset button to reset the game */
@@ -277,14 +266,11 @@ $("#reset").click(function () {
     $("div#winOrLose>p").text("");
 });
 
+/* When the player clicks the jackpot button to get a jackpot*/
 $("#jackpotBtn").click(function () {
-    let obj2 = document.createElement("audio");
-        obj2.src = "../sounds/jackpot.wav"; 
-        obj2.play(); 
-        lossNumber++;
-    $("#slot1").attr('src','../img/coin.png');
-    $("#slot2").attr('src', '../img/coin.png');
-    $("#slot3").attr('src', '../img/coin.png');
+    playSound("../sounds/jackpot.wav");
+    lossNumber++;
+    displayImages('../img/coin.png','../img/coin.png','../img/coin.png');
     $("div#winOrLose>p").text("You Won the $" + jackpot + " Jackpot!!");
     // alert("You Won the $" + jackpot + " Jackpot!!");
     playerMoney += jackpot;
@@ -324,7 +310,7 @@ function getImage(name) {
     
 }
 
-// repeat random images for 2 sections
+// repeat random images for 2 seconds
 function repeat()
 {
     randomImage();
@@ -340,9 +326,7 @@ function displayResult() {
     spinResult = Reels();
     fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
     $("div#result>p").text(fruits);
-    $("#slot1").attr('src',getImage(spinResult[0]));
-    $("#slot2").attr('src',getImage(spinResult[1]));
-    $("#slot3").attr('src',getImage(spinResult[2]));
+    displayImages(getImage(spinResult[1]),getImage(spinResult[2]),getImage(spinResult[3]));
     determineWinnings();
     turn++;
     showPlayerStats();
@@ -358,21 +342,23 @@ function randomImage()
     let randomNum1 = Math.floor(Math.random() * pics.length);
     let randomNum2 = Math.floor(Math.random() * pics.length);
     let randomNum3 = Math.floor(Math.random() * pics.length);
-    $("#slot1").attr('src', pics[randomNum1]);
-    $("#slot2").attr('src', pics[randomNum2]);
-    $("#slot3").attr('src', pics[randomNum3]);
+    displayImages(pics[randomNum1], pics[randomNum2], pics[randomNum3]);
     // callback();
 }
 
-var sound1 = "Sound1";
+// Generate sound based on the win/lose/jackpot condition
+function playSound(soundPath) {
+    let sound = document.createElement("audio");
+        sound.src = soundPath; 
+        sound.play();
+}
 
-function loadSound() {
-    createjs.Sound.registerSound("../sounds/sound1.mp3", sound1);
-  }
-
-  function playSound() {
-    createjs.Sound.play(sound1);
-  }
+// display image for each slot
+function displayImages(img1, img2, img3) {
+    $("#slot1").attr('src', img1);
+    $("#slot2").attr('src', img2);
+    $("#slot3").attr('src', img3);
+}
 
 
 
