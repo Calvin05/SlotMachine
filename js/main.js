@@ -31,7 +31,7 @@ function showPlayerStats()
 {
     winRatio = winNumber / turn;
     $("#jackpot").text("Jackpot: $" + jackpot);
-    $("#playerMoney").text("Player Money: " + playerMoney);
+    $("#playerMoney").text("Player Money: $" + playerMoney);
     $("#playerTurn").text("Turn: " + turn);
     $("#playerWins").text("Wins: " + winNumber);
     $("#playerLosses").text("Losses: " + lossNumber);
@@ -214,6 +214,7 @@ function determineWinnings()
         obj1.src = "../sounds/error.wav"; 
         obj1.play(); 
         lossNumber++;
+        jackpot += parseInt(playerBet);
         showLossMessage();
     }
     
@@ -231,10 +232,14 @@ $("#spinButton").click( function () {
         }
     }
     else if (playerBet > playerMoney) {
-        alert("You don't have enough Money to place that bet.");
+        $("div#winOrLose>p").text("not enough Money!");
+        playSound("../sounds/error.mp3");
+        // alert("You don't have enough Money to place that bet.");
     }
-    else if (playerBet < 0) {
-        alert("All bets must be a positive $ amount.");
+    else if (playerBet <= 0) {
+        $("div#winOrLose>p").text("must be a positive $ amount!");
+        playSound("../sounds/error.mp3");
+        // alert("All bets must be a positive $ amount.");
     }
     else if (playerBet <= playerMoney) {
         counter = 1;
@@ -254,13 +259,14 @@ $("#spinButton").click( function () {
         
     }
     else {
-        alert("Please enter a valid bet amount");
+        $("div#winOrLose>p").text("Invalid bet amount!");
+        playSound("../sounds/error.mp3");
+        // alert("Please enter a valid bet amount");
     }
 });
 
 /* When the player clicks the reset button to reset the game */
 $("#reset").click(function () {
-    console.log("reset button lcick");
     resetAll();
     showPlayerStats();
     $("div#winOrLose>p").text("");
@@ -326,7 +332,7 @@ function displayResult() {
     spinResult = Reels();
     fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
     $("div#result>p").text(fruits);
-    displayImages(getImage(spinResult[1]),getImage(spinResult[2]),getImage(spinResult[3]));
+    displayImages(getImage(spinResult[0]),getImage(spinResult[1]),getImage(spinResult[2]));
     determineWinnings();
     turn++;
     showPlayerStats();
