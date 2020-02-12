@@ -243,7 +243,10 @@ $("#spinButton").click( function () {
     }
     else if (playerBet <= playerMoney) {
         counter = 1;
+        $("div#winOrLose>p").text("");
         $("#spinButton").attr("disabled", true);
+        $("#jackpotBtn").attr("disabled", true);
+        $("#reset").attr("disabled", true);
         var obj = document.createElement("audio");
         obj.src = "../sounds/sound1.mp3"; 
         obj.play(); 
@@ -251,6 +254,8 @@ $("#spinButton").click( function () {
             obj.pause();
             obj.currentTime = 0;
             displayResult();
+            $("#jackpotBtn").attr("disabled", false);
+            $("#reset").attr("disabled", false);
         }, 1200);
         repeat();
         setTimeout(() => {
@@ -267,6 +272,7 @@ $("#spinButton").click( function () {
 
 /* When the player clicks the reset button to reset the game */
 $("#reset").click(function () {
+    playSound("../sounds/reset.wav")
     resetAll();
     showPlayerStats();
     $("div#winOrLose>p").text("");
