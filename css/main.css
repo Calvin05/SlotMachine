@@ -1,167 +1,25 @@
-﻿@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
-body {
-    background-image: url(../img/coin.jpg);
+﻿body
+{
+    background-image: url(../Assets/images/coin.jpg);
     background-size: cover;
 }
-ul#playerStats {
-    list-style-type: none;
-    padding: 0;
-    margin: 5px;
-    width: 40%;
-    float: left;
-    margin-left: 50px;
-}
-ul#playerStats li{
-    font-size: 25px;
-    font-family: 'Luckiest Guy', cursive;
-}
-ul#playerStats li:first-child {
-    margin-bottom: 20px;
-}
-ul#playerStats li:nth-child(2) {
-    color:  #f64b3c;
-    text-decoration: underline;
-    font-style: oblique;
-}
-#allpage {
+#mainpage
+{
     width: 800px;
-    height: 750px;
-    background-image: linear-gradient(to bottom right, #ffd98e, #f4efd3);
-    margin: auto;
-    border-radius: 30px;
-    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.5);
+    margin-left: 330px;
 }
-#main {
-    /* position: fixed; */
-    background-image: url(../img/slotmachine.png);
-    background-size: cover;
-    width: 600px;
-    height: 195px;
-    margin: 10px auto;
-    margin-bottom: 40px;
-}
-#title {
-    margin: auto;
-    width: 600px;
-    font-weight: bold;
-    font-family: 'Luckiest Guy', cursive;
-    text-align: center;
-    font-size: 85px;
-    margin-top: 15px;
-    padding-top: 20px;
-    text-shadow: 4px 2px 18px white;
-}
-.slot {
-    margin-top: 33px;
-    margin-left: 64px;
-    width: 128px;
-    height: 128px;
-}
-#slot2 {
-    margin-left: 40px;
-}
-#slot3 {
-    margin-left: 40px;
-}
-#spinButton {
-    margin-top: -30px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
-    margin: auto;
-    display: inline-block;
-    justify-content: center;
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 30px;
-    background-color:#0c7b93 ;
-    color: white;
-    transition: 0.3s;
+#canvas
+{
+    background-color: white;
+    border-radius: 15px;
 }
 
-#spinButton:hover {
-    background-color: #00a8cc;
-    box-shadow: 0px 0px 15px whitesmoke;
-    /* font-size: 35px; */
-    transition: 0.3s;
-    transform: rotate(-360deg);
-}
-
-#spinButton:focus {
-    outline-style: none;
-    transform: scale(1.1);
-    transition: 0.3;
-   
-}
-#spinButton:active {
-    transform: scale(1.0);
-    transition: 0.3;
-}
-
-#betEntry p {
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 25px;
-    margin-bottom: 0px;
-}
-#betEntry input {
+#input
+{
+    position: absolute;;
+    left:430px;
+    top:400px;
+    width:370px;
     height: 40px;
     font-size: 25px;
-    font-family: 'Luckiest Guy', cursive;
-    padding-left: 10px;
 }
-
-#entry {
-    width: 45%;
-    display: inline-block;
-    margin-left: 10em;
-}
-
-#winOrLose {
-    width: 70%;
-    margin: auto;
-    /* background-color: white; */
-    text-align: center;
-   
-}
-#winOrLose p {
-    margin-top: 20px;
-    font-size: 50px;
-    height: 70px;
-    font-family: 'Luckiest Guy', cursive;
-    /* color: #f67280; */
-    color: #f64b3c;
-}
-
-.keyButton {
-    width: 150px;
-    height: 50px;
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 20px;
-    border-radius: 20px;
-}
-
-#reset {
-    margin-left: 55px;
-    background-color: #21bf73;
-    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.5);
-}
-
-#reset:hover {
-    background-color: #7fcd91;
-}
-
-#jackpotBtn {
-    background-color: #f0134d;
-    box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.5);
-}
-
-#jackpotBtn:hover {
-    background-color: #ff6464;
-}
-
-
-  
-  
-
-
-

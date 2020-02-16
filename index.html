@@ -1,52 +1,37 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Slot Machine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS Section -->
-    <link href="css/main.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Slot Machine</title>
 </head>
 <body>
-    <div id=allpage>
-        <h1 id='title' data-aos="fade-down" data-aos-duration="500">Slot Machine</h1>
-        <div id='main' data-aos="zoom-in" data-aos-duration="1000">
-        <img src="img/spin.png" alt="" srcset="" class='slot' id='slot1'>
-        <img src="img/spin.png" alt="" srcset="" class='slot' id='slot2'>
-        <img src="img/spin.png" alt="" srcset="" class='slot' id='slot3'>
-        </div>
-        
-        <div id="betEntry">
-            <div id="entry" data-aos="fade-right">
-                <p>Place Your Bet Here:</p>
-                <input id="playerBet" name="points" value="10">
-            </div>
-            <button id="spinButton" data-aos="fade-left">Spin!</button>
-        </div>
-        <div id="winOrLose" >
-            <p></p>
-        </div>
-        <ul id="playerStats">
-            <li id="playerMoney">Player Money: $1000</li>
-            <li id="jackpot">Jackpot: $5000</li>
-            <!-- <li id="playerTurn">Turn: 0</li>
-            <li id="playerWins">Wins: 0</li>
-            <li id="playerLosses">Losses: 0</li>
-            <li id="playerWinRatio">Win Ratio: 0%</li> -->
-        </ul>
-        <button id="reset" class="keyButton">
-        Reset</button>
-        <button id="jackpotBtn" class="keyButton">
-            Don't click :)</button>
+    <!-- Your Game lives inside the canvas -->
+    <div id="mainpage">
+        <canvas id="canvas" width="750" height="750"></canvas>
+        <input type="text" id='input'/>
     </div>
+    
+    <!-- Script Section -->
 
-    <!-- JavaScript Section -->
-    <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script>
-        AOS.init();
-      </script>
+    <!-- 3rd Party Libraries-->
+    <script src="./node_modules/easeljs/lib/easeljs.min.js"></script>
+    <script src="./node_modules/tweenjs/lib/tweenjs.min.js"></script>
+    <script src="./node_modules/soundjs/lib/soundjs.min.js"></script>
+    <script src="./node_modules/preloadjs/lib/preloadjs.min.js"></script>
+
+    <!-- Game Scripts -->
+    <script src="./Scripts/objects/Vector2.js"></script>
+    <script src="./Scripts/objects/GameObject.js"></script>
+
+    <script src="./Scripts/objects/Player.js"></script>
+    <script src="./Scripts/objects/Label.js"></script>
+    <script src="./Scripts/objects/Button.js"></script>
+    <script src="./Scripts/objects/image.js"></script>
+
+    <script src="./Scripts/game.js"></script>
 </body>
 </html>
