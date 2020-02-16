@@ -4,8 +4,6 @@
 var game = (function () {
     var canvas = document.getElementsByTagName('canvas')[0];
     var stage;
-    var startLabel;
-    var startButton;
     var slotBackground;
     var slot1;
     var slot2;
@@ -76,15 +74,16 @@ var game = (function () {
         stage.addChild(slot1);
         stage.addChild(slot2);
         stage.addChild(slot3);
-        betLabel = new objects.Label("Place Your Bet Here:", "35px", "Verdana", "#000000", 275, 370, true);
+        betLabel = new objects.Label("Place Your Bet Here:", "35px", "Luckiest Guy", "#000000", 275, 370, true);
         stage.addChild(betLabel);
         spinButton = new objects.Button("./Assets/images/spinBtn.png", 590, 405, true);
         stage.addChild(spinButton);
-        playerLabel = new objects.Label("Player Money: $1000", "35px", "Verdana", "#000000", 210, 630, true);
+        playerLabel = new objects.Label("Player Money: $1000", "35px", "Luckiest Guy", "#000000", 210, 630, true);
         stage.addChild(playerLabel);
-        jackpotLabel = new objects.Label("Jackpot: $5000", "35px", "Verdana", "#ff0000", 160, 680, true);
+        jackpotLabel = new objects.Label("Jackpot: $5000", "35px", "Luckiest Guy", "#ff0000", 160, 680, true);
         stage.addChild(jackpotLabel);
-        status = new objects.Label(" ", "35px", "Verdana", "#ff0000", 200, 530, true);
+        status = new objects.Label(" ", "50px", "Luckiest Guy", "#ff0000", 375, 530, true);
+        status.textAlign = 'center';
         stage.addChild(status);
         resetButton = new objects.Button("./Assets/images/resetBtn.png", 530, 630, true);
         stage.addChild(resetButton);
@@ -105,7 +104,7 @@ var game = (function () {
                 // alert("You don't have enough Money to place that bet.");
             }
             else if (playerBet <= 0) {
-                status.text = "must be a positive $ amount!";
+                status.text = "Must be a positive $ amount!";
                 playSound("./Assets/sounds/error.mp3");
                 // alert("All bets must be a positive $ amount.");
             }
@@ -119,7 +118,13 @@ var game = (function () {
                     obj.pause();
                     obj.currentTime = 0;
                     displayResult();
+                    spinButton.visible = true;
+                    resetButton.visible = true;
+                    jackpotButton.visible = true;
                 }, 1200);
+                spinButton.visible = false;
+                resetButton.visible = false;
+                jackpotButton.visible = false;
                 repeat();
             }
             else {

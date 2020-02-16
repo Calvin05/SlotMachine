@@ -23,13 +23,15 @@ module objects
         // PUBLIC Methods
         HoverOver():void
         {
-            
+            this.shadow = new createjs.Shadow("#222222", 0, 4, 4);
+            this.setTransform
             this.scaleX = 1.1;
             this.scaleY = 1.1;
         }
 
         HoverOut():void
         {
+            this.shadow = new createjs.Shadow("#000000", 0, 0, 0);
             this.scaleX = 1.0;
             this.scaleY = 1.0;
            
